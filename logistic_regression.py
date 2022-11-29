@@ -139,9 +139,9 @@ class LogisticRegression:
         loss = 0
 
         # Compute loss and gradient. Your code should not contain python loops.
-        h = self.sigmoid(X_batch.dot(self.w))
-        loss = -np.dot(y_batch, np.log(h)) - np.dot((1-y_batch), np.log(1.0-h))
-        dw = (h - y_batch) * X_batch
+        y_pred = self.sigmoid(X_batch.dot(self.w))
+        loss = -np.dot(y_batch, np.log(y_pred)) - np.dot((1-y_batch), np.log(1.0-y_pred))
+        dw = (y_pred- y_batch) * X_batch
 
         # Right now the loss is a sum over all training examples, but we want it
         # to be an average instead so we divide by num_train.
